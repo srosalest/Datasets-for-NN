@@ -6,6 +6,7 @@ Waste classification #https://www.kaggle.com/techsash/waste-classification-data 
 Taco #https://github.com/pedropro/TACO <br/>
 Trashnet #https://github.com/garythung/trashnet <br/>
 TSD #https://sites.google.com/view/lfet/trash-sorting-database <br/>
+minc-2005 #http://opensurfaces.cs.cornell.edu/publications/minc/#download
 
 Clothing <br/>
 CAD #https://exhibits.stanford.edu/data/catalog/tb980qz1002 <br/>
