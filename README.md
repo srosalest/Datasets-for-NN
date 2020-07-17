@@ -1,14 +1,14 @@
 # Datasets-for-NN
-Datasets to be used for classification
+Datasets to be used for classification<br/>
 
-Waste and recycables
-Waste classification #https://www.kaggle.com/techsash/waste-classification-data
-Taco #https://github.com/pedropro/TACO
-Trashnet #https://github.com/garythung/trashnet
-TSD #https://sites.google.com/view/lfet/trash-sorting-database
+Waste and recycables<br/>
+Waste classification #https://www.kaggle.com/techsash/waste-classification-data <br/>
+Taco #https://github.com/pedropro/TACO <br/>
+Trashnet #https://github.com/garythung/trashnet <br/>
+TSD #https://sites.google.com/view/lfet/trash-sorting-database <br/>
 
-Clothing
-CAD #https://exhibits.stanford.edu/data/catalog/tb980qz1002
-ACS #https://data.vision.ee.ethz.ch/cvl/lbossard/accv12/
-DeepFashion #http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html
-Fashion mnist #https://github.com/zalandoresearch/fashion-mnist
+Clothing <br/>
+CAD #https://exhibits.stanford.edu/data/catalog/tb980qz1002 <br/>
+ACS #https://data.vision.ee.ethz.ch/cvl/lbossard/accv12/ <br/>
+DeepFashion #http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html <br/>
+Fashion mnist #https://github.com/zalandoresearch/fashion-mnist <br/>
