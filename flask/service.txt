@@ -1,0 +1,17 @@
+[Unit]
+Description=Flask service hello
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=srosales
+WorkingDirectory=/home/srosales/flaskapp/flask-nn-server/
+ExecStart=/home/srosales/flaskapp/flask-nn-server/devops/bin/python3 /home/srosales/flaskapp/flask-nn-server/hello.py
+
+[Install]
+WantedBy=multi-user.target
+
+//etc/systemd/system/hello.service

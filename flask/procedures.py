@@ -80,10 +80,10 @@ def load_models(model_waste_classification, model_waste_classification_weight,
 
     model_for_waste_classification = load_json(model_waste_classification, model_waste_classification_weight)
     model_for_trashnet = load_json(model_trashnet, model_trashnet_weight)
-    #model_for_brand_recognition = load_json(model_brand_recognition, model_brand_recognition_weight)
+    model_for_brand_recognition = load_json(model_brand_recognition, model_brand_recognition_weight)
     model_for_clothes_recognition = load_json(model_clothes_recognition, model_clothes_recognition_weight)
 
-    return model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition
+    return model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition
 
 def prediction_interpretation(prediction_list_values):
 
@@ -95,7 +95,7 @@ def prediction_interpretation(prediction_list_values):
         return prediction[1]
 
 
-def get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition):
+def get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition):
 
     #waste classification
     classes_waste = ['organic','inorganic']
@@ -112,9 +112,12 @@ def get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, mode
         prediction_2 = classes_trashnet[prediction_trashnet]
 
         #brand recognition
-        #prediction_brand_recognition = model_for_preprocess.predict("todefine").tolist()
-        #implent this
-        prediction_3 = 'empty'
+        classes_brand = ['adidas','aldi','apple','becks','bmw','carlsberg','chimay','cocacola','corona','dhl','erdinger','esso',
+            'fedex','ferrari','ford','foster','google','guiness','heineken','hp','milka','no-logo','nvidia','paulaner','pepsi',
+            'rittersport','shell','singha','starbucks','stellaartois','texaco','tsingtao','ups']
+        prediction_brand_recognition = model_for_brand_recognition.predict(image_waste).tolist() #uses the same 128x128 rgb image from waste
+        prediction_brand_recognition = prediction_interpretation(prediction_brand_recognition[0])
+        prediction_3 = classes_brand[prediction_brand_recognition]
 
         #clothes classification
         classes_clothes = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
@@ -130,14 +133,14 @@ def get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, mode
 
     return prediction
 
-def predict(image_decoded,model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition):
+def predict(image_decoded,model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition):
 
     target_size_bw =  [28,28]
     target_size_rgb = [299,299]
     targe_size_waste = [128,128]
 
     image_rgb, image_bw, image_waste = preprocess_image_trashnet_fashion(image_decoded, target_size_rgb, target_size_bw, targe_size_waste)
-    predictions = get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition)
+    predictions = get_predictions(image_rgb, image_bw, image_waste, model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition)
 
     return predictions
 

@@ -17,15 +17,15 @@ model_waste_classification_weight = 'trained-models/From_scratchV1.hdf5'
 model_trashnet = 'trained-models/Thrasnet-InceptionResNetV2_adadelta.json'
 model_trashnet_weight = 'trained-models/weights_Thrasnet-InceptionResNetV2_adadelta.hdf5'
 
-model_brand_recognition = 'empty'
-model_brand_recognition_weight = 'empty'
+model_brand_recognition = 'trained-models/Brand_DensenetV1.json'
+model_brand_recognition_weight = 'trained-models/Brand_DensenetV1.hdf5'
 
 model_clothes_recognition = 'trained-models/mnist_fashion_adagrad_cnn.json'
 model_clothes_recognition_weight = 'trained-models/weights_mnist_fashion_adagrad_cnn.hdf5'
 
 
 #load models
-model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition = load_models(model_waste_classification, 
+model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition = load_models(model_waste_classification, 
     model_waste_classification_weight, model_trashnet, model_trashnet_weight, model_brand_recognition,model_brand_recognition_weight, model_clothes_recognition, 
     model_clothes_recognition_weight)
 
@@ -38,7 +38,7 @@ def neural_prediction():
     decoded = base64.b64decode(encoded)
     image = Image.open(io.BytesIO(decoded))
 
-    predictions = predict(image,model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition)
+    predictions = predict(image,model_for_preprocess, model_for_waste_classification, model_for_trashnet, model_for_clothes_recognition, model_for_brand_recognition)
 
     if (len(predictions) != 0):
 
