@@ -3,7 +3,7 @@ tensorflow 2.2.0
 keras 2.4.3
 pillow
 opencv-python
-apt install -y libsm6 libxext6 libxrender-devt
+apt install -y libsm6 libxext6 libxrender-dev
 
 postman
 python3.8
@@ -11,5 +11,5 @@ python3.8
 
 
 export FLASK_APP=hello.py
-flask run --hosr=0.0.0.0
+flask run --host=0.0.0.0
 
